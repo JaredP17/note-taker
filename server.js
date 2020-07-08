@@ -6,6 +6,7 @@
 const express = require("express");
 const path = require("path");
 const notesData = require("./db/db.json");
+const fs = require("fs");
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -31,10 +32,14 @@ app.use(express.json());
 // ================================================================================
 
 // API Routes
-app.get("/api/notes", (req, res) => {
+app.get("/api/notes", (req, res) => { // GET
     res.json(notesData);
     console.log(notesData);
 });
+
+app.post("/api/notes", (req, res) => { // POST
+    notesData.push(req.body);
+})
 
 // HTML Routes
 // Index Route
