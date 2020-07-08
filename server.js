@@ -5,6 +5,8 @@
 
 const express = require("express");
 const path = require("path");
+const notesData = require("./db/db.json");
+const fs = require("fs");
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -29,7 +31,17 @@ app.use(express.json());
 // when users visit or request data from various URLs.
 // ================================================================================
 
-// View/HTML
+// API Routes
+app.get("/api/notes", (req, res) => { // GET
+    res.json(notesData);
+    console.log(notesData);
+});
+
+app.post("/api/notes", (req, res) => { // POST
+    notesData.push(req.body);
+})
+
+// HTML Routes
 // Index Route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
@@ -44,8 +56,6 @@ app.get("/notes", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
-
-// API/JSON
 
 // =============================================================================
 // LISTENER
