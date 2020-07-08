@@ -3,7 +3,8 @@
 // Series of npm packages that we will use to give our server useful functionality
 // ==============================================================================
 
-var express = require("express");
+const express = require("express");
+const path = require("path");
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -11,10 +12,10 @@ var express = require("express");
 // ==============================================================================
 
 // Tells node that we are creating an "express" server
-var app = express();
+const app = express();
 
 // Sets an initial port. We"ll use this later in our listener
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +30,7 @@ app.use(express.json());
 
 // View/HTML
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.sendFile(path.join(__dirname, "./public/index.html"));
 })
 
 // API/JSON
@@ -40,5 +41,5 @@ app.get("/", (req, res) => {
 // =============================================================================
 
 app.listen(PORT, (req, res) => {
-  console.log("App listening on PORT: ", PORT);
+  console.log(`App running on http://localhost:${PORT}`);
 });
