@@ -30,7 +30,7 @@ app.use(express.json());
 
 // View/HTML
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.sendFile(path.join(__dirname, "./public/index.html"));
 })
 
 // API/JSON
@@ -41,5 +41,5 @@ app.get("/", (req, res) => {
 // =============================================================================
 
 app.listen(PORT, (req, res) => {
-  console.log("App listening on PORT: ", PORT);
+  console.log(`App running on http://localhost:${PORT}`);
 });
