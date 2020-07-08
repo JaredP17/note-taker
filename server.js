@@ -24,14 +24,20 @@ app.use(express.json());
 // ================================================================================
 // ROUTER
 // The below points our server to a series of "route" files.
-// These routes give our server a "map" of how to respond 
+// These routes give our server a "map" of how to respond
 // when users visit or request data from various URLs.
 // ================================================================================
 
 // View/HTML
+// Index Route
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-})
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+// Notes Route
+app.get("/notes.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
+  });
 
 // API/JSON
 
