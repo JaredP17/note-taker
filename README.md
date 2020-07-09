@@ -4,13 +4,15 @@
 
 ## Description
 
-An application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+An application that can be used to write, save, and delete notes. This application uses an express backend and saves/retrieves note data to/from a JSON file.
 
 ## Table of Contents
 
 * [Installation](#installation)
 
 * [Usage](#usage)
+
+* [Preview](#preview)
 
 * [License](#license)
 
@@ -22,15 +24,20 @@ An application that can be used to write, save, and delete notes. This applicati
 
 ## Installation
 
-To install necessary dependencies, run the following command:
-
-```
-npm install
-```
+1. Clone the repo.
+2. Navigate to project folder in the command line.
+3. To install necessary dependencies, run the following command: `npm install`
 
 ## Usage
 
-1. Clone repo and run on localhost or visit deployable site on [heroku](https://gt-hw-note-taker-jrp.herokuapp.com/).
+* Run on localhost or visit deployable site on [heroku](https://gt-hw-note-taker-jrp.herokuapp.com/).
+* Start creating and managing your notes!
+
+## Preview
+![Index](./public/assets/images/index.png)
+![Notes](./public/assets/images/notes.png)
+![Note 1](./public/assets/images/note1.png)
+![Note 2](./public/assets/images/note2.png)
 
 ## License
 
