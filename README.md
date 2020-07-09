@@ -34,10 +34,13 @@ An application that can be used to write, save, and delete notes. This applicati
 * Start creating and managing your notes!
 
 ## Preview
-![Index](./public/assets/images/index.png)
-![Notes](./public/assets/images/notes.png)
-![Note 1](./public/assets/images/note1.png)
-![Note 2](./public/assets/images/note2.png)
+<kbd><img src="./public/assets/images/index.png" alt="index"/></kbd>
+
+<kbd><img src="./public/assets/images/notes.png" alt="notes"/></kbd>
+
+<kbd><img src="./public/assets/images/note1.png" alt="note 1"/></kbd>
+
+<kbd><img src="./public/assets/images/note2.png" alt="note 2"/></kbd>
 
 ## License
 
