@@ -5,9 +5,10 @@
 
 const express = require("express");
 const path = require("path");
-const notesData = require("./db/db.json");
 const fs = require("fs");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
+const { notEqual } = require("assert");
+let notesData = require("./db/db.json");
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -45,15 +46,28 @@ app.post("/api/notes", (req, res) => {
   notesData.push(note);
 
   // Write JSON DB file
-  fs.writeFile("./db/db.json", JSON.stringify(notesData), err => {
+  fs.writeFile("./db/db.json", JSON.stringify(notesData), (err) => {
     if (err) throw err;
-    else res.json(notesData); // Render new note
-  })
+    else {
+      console.log(`New note added! ID: ${note.id}`);
+      res.json(note);
+    }
+  });
 });
 
 // DELETE
 app.delete("/api/notes/:id", (req, res) => {
-  
+  const chosenId = req.params.id;
+  notesData = notesData.filter((note) => note.id !== chosenId);
+
+  // Write JSON DB file
+  fs.writeFile("./db/db.json", JSON.stringify(notesData), (err) => {
+    if (err) throw err;
+    else {
+      console.log(`Note ${chosenId} was deleted!`);
+      res.json(chosenId);
+    }
+  });
 });
 
 // HTML Routes
