@@ -35,14 +35,20 @@ app.use(express.json());
 // API Routes
 // GET
 app.get("/api/notes", (req, res) => {
-  
   res.json(notesData);
 });
 
 // POST
 app.post("/api/notes", (req, res) => {
-  
-  console.log(req.body.id);
+  const note = req.body;
+  note.id = uuidv4(); // Add unique ID to note
+  notesData.push(note);
+
+  // Write JSON DB file
+  fs.writeFile("./db/db.json", JSON.stringify(notesData), err => {
+    if (err) throw err;
+    else res.json(notesData); // Render new note
+  })
 });
 
 // DELETE
@@ -51,17 +57,12 @@ app.delete("/api/notes/:id", (req, res) => {
 });
 
 // HTML Routes
-// Index Route
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./public/index.html"));
-});
-
 // Notes Route
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
-// If no matching route is found default to home
+// If no matching route is found default to index
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
