@@ -8,9 +8,10 @@
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
-  "author": "",
+  "author": "Jared Porter",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "uuid": "^8.2.0"
   }
 }

@@ -7,6 +7,7 @@ const express = require("express");
 const path = require("path");
 const notesData = require("./db/db.json");
 const fs = require("fs");
+const { v4: uuidv4 } = require('uuid');
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -32,14 +33,22 @@ app.use(express.json());
 // ================================================================================
 
 // API Routes
-app.get("/api/notes", (req, res) => { // GET
-    res.json(notesData);
-    console.log(notesData);
+// GET
+app.get("/api/notes", (req, res) => {
+  
+  res.json(notesData);
 });
 
-app.post("/api/notes", (req, res) => { // POST
-    notesData.push(req.body);
-})
+// POST
+app.post("/api/notes", (req, res) => {
+  
+  console.log(req.body.id);
+});
+
+// DELETE
+app.delete("/api/notes/:id", (req, res) => {
+  
+});
 
 // HTML Routes
 // Index Route
